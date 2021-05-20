@@ -1,0 +1,3 @@
+
+nnoremap <leader>y : FloatermNew  <CR>
+nnoremap <leader>t : FloatermToggle  <CR>
