@@ -1,6 +1,6 @@
 
 lua << EOF
-
+require'lsp_signature'.on_attach()
 local actions = require('telescope.actions')
 require('telescope').setup {
     defaults = {

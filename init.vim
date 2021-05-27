@@ -8,14 +8,16 @@
 
 let g:vimspector_enable_mappings = 'HUMAN'
 
+packadd termdebug
+
 call plug#begin('~/.vim/plugged')
 " Plugins
 " Lsp
-
 Plug 'nvim-treesitter/playground'
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
-Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/nvim-compe'
+Plug 'ray-x/lsp_signature.nvim'
 
 Plug 'othree/jsdoc-syntax.vim'
 Plug 'matze/vim-move'
@@ -36,8 +38,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'vim-airline/vim-airline'
 "
 
-" Auto Paur {[("''")]}
-Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 " Floating Terminal and Maximzer
 Plug 'voldikss/vim-floaterm'
@@ -52,8 +52,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'rking/ag.vim'
+Plug 'tversteeg/registers.nvim'
 "Themes
 Plug 'tjdevries/colorbuddy.vim'
+Plug 'Shadorain/shadotheme'
 Plug 'Th3Whit3Wolf/onebuddy'
 Plug 'nikolvs/vim-sunbather'
 Plug 'lifepillar/vim-solarized8'

@@ -19,7 +19,6 @@ set incsearch
 set hidden
 
 " Dont wrap text
-set nowrap
 
 
 " History/Undo
@@ -48,7 +47,6 @@ nnoremap <leader>c :bd<CR>
 nnoremap <C-h> :lnext <CR>
 nnoremap <C-l> :lprev <CR>
 
-nnoremap  <C-m> : bnext <CR>
 nnoremap  <C-n> : bprev <CR>
 
 
