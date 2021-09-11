@@ -40,15 +40,19 @@ colorscheme onedark
 set pumheight=10
 
 
-" buffer movement remaps
+" quickfix list and local list movements
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprev<CR>
 nnoremap <leader>c :bd<CR>
 nnoremap <C-h> :lnext <CR>
 nnoremap <C-l> :lprev <CR>
 
-nnoremap  <C-n> : bprev <CR>
+nnoremap   <C-b> : bprev <CR>
+nnoremap  <C-n> : bnext <CR>
+" close all buffers but current one
+nnoremap <leader>o : %bd\|e# <CR>
 
 
 nnoremap <leader>m :MaximizerToggle<CR>
+
 

@@ -6,7 +6,6 @@
 " To see what an option is run :h {config}
 " Run :options to see a list of all options
 
-let g:vimspector_enable_mappings = 'HUMAN'
 
 packadd termdebug
 
@@ -22,7 +21,6 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'othree/jsdoc-syntax.vim'
 Plug 'matze/vim-move'
 
-Plug 'puremourning/vimspector'
 
 " Linter
 Plug 'dense-analysis/ale'
