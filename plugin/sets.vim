@@ -35,7 +35,6 @@ set termguicolors
 " thick boi curosr always
 set guicursor=
 
-colorscheme onedark
 
 set pumheight=10
 
