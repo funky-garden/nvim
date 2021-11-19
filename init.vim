@@ -6,9 +6,7 @@
 " To see what an option is run :h {config}
 " Run :options to see a list of all options
 
-
 packadd termdebug
-
 call plug#begin('~/.vim/plugged')
 " Plugins
 " Lsp
@@ -16,9 +14,6 @@ Plug 'nvim-treesitter/playground'
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'hrsh7th/nvim-compe'
-
-Plug 'matze/vim-move'
-
 
 " Linter
 Plug 'dense-analysis/ale'
@@ -40,13 +35,13 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'othree/jsdoc-syntax.vim'
 
-" Floating Terminal and Maximzer
-Plug 'voldikss/vim-floaterm'
+" Maximzer
 Plug 'szw/vim-maximizer'
-
 
 " git
 Plug 'tpope/vim-fugitive'
+Plug 'shumphrey/fugitive-gitlab.vim'
+
 Plug 'airblade/vim-gitgutter'
 
 " Fuzzy Find
@@ -54,18 +49,15 @@ Plug 'kien/ctrlp.vim'
 Plug 'rking/ag.vim'
 Plug 'tversteeg/registers.nvim'
 
+" Ranger
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
+
+"A vim
+Plug 'vim-scripts/a.vim'
+
 "Themes
-Plug 'nightsense/office'
-Plug 'tjdevries/colorbuddy.vim'
-Plug 'Shadorain/shadotheme'
-Plug 'Th3Whit3Wolf/onebuddy'
-Plug 'nikolvs/vim-sunbather'
-Plug 'lifepillar/vim-solarized8'
 Plug 'joshdick/onedark.vim'
-Plug 'ghifarit53/tokyonight-vim'
-Plug 'gruvbox-community/gruvbox'
-Plug 'colepeters/spacemacs-theme.vim'
-Plug 'fcpg/vim-fahrenheit'
 call plug#end()
 
 let mapleader = " "
@@ -76,10 +68,25 @@ fun! TrimWhiteSpace()
     call winrestview(l:save)
 endfun
 
-augroup BENNY_GROUP
+augroup TRIM_WHITE_SPACE_GROUP
     autocmd!
     autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END
+
+" cpp/c header guards
+" Add header guard for header files
+function! InsertHeaderGuard()
+    let headerguard = "_" . substitute(toupper(expand("%:t")), "\\.", "_", "g") . "_"
+    exe "normal gg"
+    exe "normal O#ifndef " .headerguard
+    exe "normal o#define " .headerguard
+    exe "normal Go#endif //" .headerguard
+    exe "normal O"
+endfunction
+
+autocmd! bufnewfile *.h,*.hpp exe "call InsertHeaderGuard()"
+
+
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
@@ -88,7 +95,6 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 set completeopt=menuone,noinsert
 set shortmess+=c
-Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
@@ -96,6 +102,8 @@ if executable('ag')
 endif
 
 
+set splitright
+nnoremap <leader>t : vsplit term://zsh <CR>
 
-let g:termdebugger = "arm-none-eabi-gdb-py"
 colorscheme onedark
+hi Normal guibg=NONE ctermbg=NONE
