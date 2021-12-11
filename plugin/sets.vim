@@ -3,7 +3,6 @@ set number
 set relativenumber
 set rnu
 
-
 " TAB SETTINGS
 set tabstop=4 softtabstop=4
 set shiftwidth=4
@@ -18,9 +17,6 @@ set incsearch
 " Keep buffers open like all the time
 set hidden
 
-" Dont wrap text
-
-
 " History/Undo
 set noswapfile
 set nobackup
@@ -34,10 +30,12 @@ set signcolumn=yes
 " set termguicolors
 " thick boi curosr always
 set guicursor=
-
-
 set pumheight=10
+let g:ranger_replace_netrw = 1
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
+" vim a to ctrl a
+nnoremap <C-a> :A<CR>
 
 " quickfix list and local list movements
 nnoremap <C-j> :cnext<CR>
@@ -55,17 +53,13 @@ nnoremap <leader>o : %bd\|e# <CR>
 nnoremap <leader>m :MaximizerToggle<CR>
 nnoremap <leader>e :Ranger<CR>
 
-let g:ranger_replace_netrw = 1
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 nnoremap <leader>vd :lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>vi :lua vim.lsp.buf.implementation()<CR>
 nnoremap <leader>vsh :lua vim.lsp.buf.signature_help()<CR>
 nnoremap <leader>vrr :lua vim.lsp.buf.references()<CR>
 nnoremap <leader>vrn :lua vim.lsp.buf.rename()<CR>
-nnoremap <leader>vh :lua vim.lsp.buf.hover()<CR>
+nnoremap <leader>h :lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>vca :lua vim.lsp.buf.code_action()<CR>
-nnoremap <leader>vsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
 nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <leader>vll :call LspLocationList()<CR>
 
