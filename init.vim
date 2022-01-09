@@ -22,6 +22,9 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
+"nginx highlighting
+Plug 'chr4/nginx.vim'
+
 " For vsnip users.
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
@@ -38,7 +41,8 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 
 " status bar
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons' " lua
 
 " Comments
@@ -66,7 +70,11 @@ Plug 'tversteeg/registers.nvim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
+" Mardown Preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+
+" visual increment (ctrl-a)
+Plug 'triglav/vim-visual-increment'
 
 
 "Themes
@@ -103,8 +111,8 @@ autocmd! bufnewfile *.h,*.hpp exe "call InsertHeaderGuard()"
 autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -123,3 +131,4 @@ nnoremap <leader>t : vsplit term://zsh <CR>
 colorscheme onedark
 hi Normal guibg=NONE ctermbg=NONE
 set encoding=UTF-8
+

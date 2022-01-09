@@ -24,6 +24,7 @@ require'lspconfig'.tsserver.setup{
     capabilities = capabilities,
     root_dir = function() return (vim.loop.cwd())end
 }
+
 require'lspconfig'.ltex.setup{}
 
 require'lspconfig'.eslint.setup{}
@@ -88,4 +89,15 @@ require'lspconfig'.sumneko_lua.setup {
         },
     },
 }
+require'lspconfig'.rls.setup{
+  settings = {
+    rust = {
+      unstable_features = true,
+      build_on_save = false,
+      all_features = true,
+    },
+  },
+}
+
+
 
