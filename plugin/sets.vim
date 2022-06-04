@@ -7,7 +7,9 @@ set rnu
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
-set smartindent
+set smarttab
+
+"let the mouse work
 set mouse=a
 
 " Turn off search highlighting
@@ -21,6 +23,15 @@ set hidden
 set noswapfile
 set nobackup
 
+"search
+set ignorecase
+set incsearch
+set hlsearch
+set wildmenu
+"" <C-L> clears the serach highlight
+if maparg('<C-L>', 'n') ==# ''
+    nnoremap <C-l> : let @/ = ""<CR>
+endif
 
 " Scroll when 8 away from bottom
 set scrolloff=8
@@ -34,15 +45,12 @@ set pumheight=10
 let g:ranger_replace_netrw = 1
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
-" vim a to ctrl a
-nnoremap <C-a> :A<CR>
 
 " quickfix list and local list movements
-nnoremap <C-j> :cnext<CR>
-nnoremap <C-k> :cprev<CR>
+nnoremap <C-j> :lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <C-k> :lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <leader>c :bd<CR>
-nnoremap <C-h> :lnext <CR>
-nnoremap <C-l> :lprev <CR>
+nnoremap <C-h> :cprev <CR>
 
 nnoremap   <C-b> : bprev <CR>
 nnoremap  <C-n> : bnext <CR>

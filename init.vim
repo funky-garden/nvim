@@ -14,7 +14,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'ray-x/lsp_signature.nvim'
-
+Plug 'max397574/better-escape.nvim'
 " completion
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -51,7 +51,6 @@ Plug 'othree/jsdoc-syntax.vim'
 
 " Enhance Vim
 Plug 'tpope/vim-surround'
-Plug 'vim-scripts/a.vim'
 
 " Maximzer
 Plug 'szw/vim-maximizer'
@@ -76,9 +75,11 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " visual increment (ctrl-a)
 Plug 'triglav/vim-visual-increment'
 
-
+Plug 'voldikss/vim-floaterm'
 "Themes
 Plug 'joshdick/onedark.vim'
+Plug 'neoclide/vim-jsx-improve'
+
 call plug#end()
 
 let mapleader = " "
@@ -126,9 +127,24 @@ if executable('ag')
 endif
 
 set splitright
-nnoremap <leader>t : vsplit term://zsh <CR>
+let  g:floaterm_autoinsert = 'false'
+nnoremap <leader>t : FloatermToggle<CR>
 
 colorscheme onedark
 hi Normal guibg=NONE ctermbg=NONE
 set encoding=UTF-8
+
+" Stop using the fucking arrow keys bitch
+" Disable Arrow keys in Normal mode
+" map <up> <nop>
+" map <down> <nop>
+" map <left> <nop>
+" map <right> <nop>
+
+" " Disable Arrow keys in Insert mode
+" imap <up> <nop>
+" imap <down> <nop>
+" imap <left> <nop>
+" imap <right> <nop>
+autocmd FileType javascriptreact setlocal shiftwidth=2 tabstop=2
 

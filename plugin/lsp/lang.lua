@@ -1,29 +1,6 @@
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-require'lspconfig'.tsserver.setup{
-    handlers = {
-        ["textDocument/publishDiagnostics"] = function(_, _, params, client_id, _, config)
-            if params.diagnostics ~= nil then
-                local idx = 1
-                while idx <= #params.diagnostics do
-                    if params.diagnostics[idx].code == 80001 or params.diagnostics[idx].code == 7016 then
-                        table.remove(params.diagnostics, idx)
-                    else
-                        idx = idx + 1
-                    end
-                end
-            end
-            vim.lsp.diagnostic.on_publish_diagnostics(_, _, params, client_id, _, config)
-        end,
-    },
-    cmd = { "typescript-language-server", "--stdio" },
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-    init_options = {
-        hostInfo = "neovim"
-    },
-    capabilities = capabilities,
-    root_dir = function() return (vim.loop.cwd())end
-}
+require'lspconfig'.tsserver.setup{}
 
 require'lspconfig'.ltex.setup{}
 
@@ -63,6 +40,8 @@ require'lspconfig'.clangd.setup {
     root_dir = function() return (vim.loop.cwd())end
 }
 
+require'lspconfig'.jdtls.setup{}
+
 require'lspconfig'.sumneko_lua.setup {
     cmd = {"lua-language-server", "-E", "/usr/local/lib/lua-language-server/bin/Linux/main.lua"};
     capabilities = capabilities,
@@ -101,3 +80,6 @@ require'lspconfig'.rls.setup{
 
 
 
+require'lspconfig'.gopls.setup{}
+require'lspconfig'.vuels.setup{}
+require("better_escape").setup()
