@@ -14,6 +14,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'ray-x/lsp_signature.nvim'
+Plug 'itspriddle/vim-shellcheck'
+Plug 'nacitar/a.vim'
 Plug 'max397574/better-escape.nvim'
 " completion
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -148,3 +150,7 @@ set encoding=UTF-8
 " imap <right> <nop>
 autocmd FileType javascriptreact setlocal shiftwidth=2 tabstop=2
 
+" Align switch statements with case labels
+set cino=l1
+" Scope declarations aligned with block
+set cino=g0

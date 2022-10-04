@@ -25,9 +25,6 @@ set nobackup
 
 "search
 set ignorecase
-set incsearch
-set hlsearch
-set wildmenu
 "" <C-L> clears the serach highlight
 if maparg('<C-L>', 'n') ==# ''
     nnoremap <C-l> : let @/ = ""<CR>
@@ -51,6 +48,7 @@ nnoremap <C-j> :lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <C-k> :lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <leader>c :bd<CR>
 nnoremap <C-h> :cprev <CR>
+nnoremap <leader>a :A<CR>
 
 nnoremap   <C-b> : bprev <CR>
 nnoremap  <C-n> : bnext <CR>

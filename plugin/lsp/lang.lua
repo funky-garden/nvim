@@ -1,4 +1,20 @@
 
+local treesitter = require'nvim-treesitter.configs'
+
+treesitter.setup {
+  ensure_installed = {
+    'c', 'cpp', 'dart', 'go', 'html', 'java', 'javascript', 'python', 'ruby',
+    'rust', 'typescript'
+  },
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = true
+  },
+  indent = {
+    enable = false
+  }
+}
+
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 require'lspconfig'.tsserver.setup{}
 
@@ -13,6 +29,7 @@ require'lspconfig'.bashls.setup{
     capabilities = capabilities
 }
 require'lspconfig'.dockerls.setup{
+    root_dir = cwd,
     capabilities = capabilities
 }
 
