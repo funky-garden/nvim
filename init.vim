@@ -31,6 +31,7 @@ Plug 'chr4/nginx.vim'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
+Plug 'andythigpen/nvim-coverage'
 
 " tree sitter {highlighting}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -63,15 +64,15 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'airblade/vim-gitgutter'
 
 " Fuzzy Find
-Plug 'kien/ctrlp.vim'
-Plug 'rking/ag.vim'
-Plug 'tversteeg/registers.nvim'
+" Plug 'kien/ctrlp.vim'
+" Plug 'rking/ag.vim'
+" Plug 'tversteeg/registers.nvim'
 
-" Ranger
-Plug 'francoiscabrol/ranger.vim'
-Plug 'rbgrouleff/bclose.vim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'debugloop/telescope-undo.nvim'
+Plug 'cljoly/telescope-repo.nvim'
 
-" Mardown Preview
+
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 " visual increment (ctrl-a)
@@ -83,6 +84,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'neoclide/vim-jsx-improve'
 
 call plug#end()
+
 
 let mapleader = " "
 
@@ -104,7 +106,7 @@ function! InsertHeaderGuard()
     let headerguard = "_" . substitute(toupper(expand("%:t")), "\\.", "_", "g") . "_"
     exe "normal gg"
     exe "normal O#ifndef " .headerguard
-    exe "normal o#define " .headerguard
+    exe "normaet o#define " .headerguard
     exe "normal Go#endif //" .headerguard
     exe "normal O"
 endfunction
@@ -121,12 +123,12 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 set completeopt=menu,menuone,noselect
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-let g:ctrlp_open_new_file = 'r'
-if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
+" let g:ctrlp_working_path_mode = 0
+" let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+" let g:ctrlp_open_new_file = 'r'
+" if executable('ag')
+"     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" endif
 
 set splitright
 let  g:floaterm_autoinsert = 'false'
@@ -150,6 +152,7 @@ set encoding=UTF-8
 " imap <right> <nop>
 autocmd FileType javascriptreact setlocal shiftwidth=2 tabstop=2
 
+let b:coverage_provider= 'gcov'
 " Align switch statements with case labels
 set cino=l1
 " Scope declarations aligned with block

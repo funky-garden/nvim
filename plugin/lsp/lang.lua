@@ -1,6 +1,7 @@
 
-local treesitter = require'nvim-treesitter.configs'
+require("telescope").load_extension("undo")
 
+local treesitter = require'nvim-treesitter.configs'
 treesitter.setup {
   ensure_installed = {
     'c', 'cpp', 'dart', 'go', 'html', 'java', 'javascript', 'python', 'ruby',
@@ -15,7 +16,7 @@ treesitter.setup {
   }
 }
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 require'lspconfig'.tsserver.setup{}
 
 require'lspconfig'.ltex.setup{}

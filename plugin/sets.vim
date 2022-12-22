@@ -26,8 +26,8 @@ set nobackup
 "search
 set ignorecase
 "" <C-L> clears the serach highlight
-if maparg('<C-L>', 'n') ==# ''
-    nnoremap <C-l> : let @/ = ""<CR>
+if maparg('<C-Y>', 'n') ==# ''
+    nnoremap <C-y> : let @/ = ""<CR>
 endif
 
 " Scroll when 8 away from bottom
@@ -44,10 +44,11 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 
 " quickfix list and local list movements
-nnoremap <C-j> :lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <C-k> :lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <C-j> :lua vim.diagnostic.goto_next()<CR>
+nnoremap <C-k> :lua vim.diagnostic.goto_prev()<CR>
 nnoremap <leader>c :bd<CR>
-nnoremap <C-h> :cprev <CR>
+nnoremap <C-h> :cnext<CR>
+nnoremap <C-l> :cprev <CR>
 nnoremap <leader>a :A<CR>
 
 nnoremap   <C-b> : bprev <CR>
@@ -59,13 +60,21 @@ nnoremap <leader>o : %bd\|e# <CR>
 nnoremap <leader>m :MaximizerToggle<CR>
 nnoremap <leader>e :Ranger<CR>
 
+nnoremap <C-p>       <cmd>Telescope find_files<cr>
+nnoremap <leader>km  <cmd>Telescope keymaps<cr>
+nnoremap <leader>b   <cmd>Telescope buffers<cr>
+nnoremap <leader>g   <cmd>Telescope live_grep<cr>
+nnoremap <leader>l   <cmd>Telescope git_commits<cr>
+nnoremap <leader>r   <cmd>Telescope git_branches<cr>
+nnoremap <leader>u   <cmd>Telescope undo<cr>
+nnoremap <leader>gs  <cmd>Telescope git_status<cr>
+nnoremap <leader>vrr <cmd>Telescope lsp_references<cr>
+nnoremap <leader>vd  <cmd>Telescope lsp_definitions<cr>
+nnoremap <leader>vi  <cmd>Telescope lsp_implementations<cr>
+nnoremap <leader>vn  <cmd>Telescope diagnostics<cr>
 
-nnoremap <leader>vd :lua vim.lsp.buf.definition()<CR>
-nnoremap <leader>vi :lua vim.lsp.buf.implementation()<CR>
 nnoremap <leader>vsh :lua vim.lsp.buf.signature_help()<CR>
-nnoremap <leader>vrr :lua vim.lsp.buf.references()<CR>
 nnoremap <leader>vrn :lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>h :lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>vca :lua vim.lsp.buf.code_action()<CR>
-nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
 
