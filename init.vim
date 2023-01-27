@@ -83,6 +83,8 @@ Plug 'voldikss/vim-floaterm'
 Plug 'joshdick/onedark.vim'
 Plug 'neoclide/vim-jsx-improve'
 
+Plug 'samjwill/nvim-unception'
+
 call plug#end()
 
 
